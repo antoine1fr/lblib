@@ -1,3 +1,5 @@
+/test/
 /uml/
-~*
+*~
 *.[oa]
+/libldmy*.a
