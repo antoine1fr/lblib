@@ -55,6 +55,7 @@ namespace lblib
     SharedPtr const&	operator = (SharedPtr const&);
     SharedPtr const&	operator = (T* rawPtr);
     T&			operator * (void) const;
+    T*			operator -> (void) const;
 
   private:
     void		_release(void);
@@ -125,6 +126,12 @@ namespace lblib
 	this->_refCount = 0;
       }
     }
+  }
+
+  template <typename T>
+  T* SharedPtr<T>::operator -> (void) const
+  {
+    return *this->_rawPtr;
   }
 } // namespace lblib
 
