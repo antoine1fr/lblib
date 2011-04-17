@@ -2,8 +2,8 @@
 
 #include <pthread.h>
 
-#include "ScopedLock.hpp"
-#include "Mutex.hpp"
+#include "LblibScopedLock.hpp"
+#include "MLblibutex.hpp"
 
 namespace lblib
 {

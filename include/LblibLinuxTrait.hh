@@ -1,7 +1,7 @@
 #pragma once
 #ifndef _WIN32
 
-# include "PthreadTrait.hh"
+# include "LblibPthreadTrait.hh"
 
 namespace lblib
 {

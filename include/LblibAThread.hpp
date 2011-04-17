@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-#include "LinuxTrait.hh"
+#include "LblibLinuxTrait.hh"
 
 namespace lblib
 {

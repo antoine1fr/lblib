@@ -1,6 +1,6 @@
 #pragma once
 
-#include "compilation.hh"
+#include "LblibCompilation.hh"
 #ifdef LBLIB_PLATFORM_LINUX
 
 # include <pthread.h>

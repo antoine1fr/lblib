@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Mutex.hpp"
+#include "LblibMutex.hpp"
 
 namespace lblib
 {
