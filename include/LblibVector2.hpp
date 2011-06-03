@@ -60,6 +60,8 @@ namespace lblib
 
     template <typename T>
       bool	operator == (Vector2<T> const& u, Vector2<T> const& v);
+    template <typename T>
+      bool	operator != (Vector2<T> const& u, Vector2<T> const& v);
 
     typedef Vector2<float>	Vector2f;
     typedef Vector2<int>		Vector2i;
@@ -250,6 +252,14 @@ namespace lblib
 	if ((u.getX() == v.getX()) && (u.getY() == v.getY()))
 	  return true;
 	return false;
+      }
+
+    template <typename T>
+      bool operator != (Vector2<T> const& u, Vector2<T> const& v)
+      {
+	if (u == v)
+	  return false;
+	return true;
       }
 
     template <typename T>

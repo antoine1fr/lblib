@@ -64,6 +64,8 @@ namespace lblib
 
     template <typename T>
       bool	operator == (Vector3<T> const& u, Vector3<T> const& v);
+    template <typename T>
+      bool	operator != (Vector3<T> const& u, Vector3<T> const& v);
 
     typedef Vector3<float>	Vector3f;
     typedef Vector3<int>		Vector3i;
@@ -285,6 +287,14 @@ namespace lblib
 	    && (u.getZ() == v.getZ()))
 	  return true;
 	return false;
+      }
+
+    template <typename T>
+      bool operator != (Vector3<T> const& u, Vector3<T> const& v)
+      {
+	if (u == v)
+	  return false;
+	return true;
       }
 
     template <typename T>
