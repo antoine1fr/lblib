@@ -6,9 +6,6 @@ namespace lblib
 {
   namespace math
   {
-    /** @class Vector2
-     * @brief Help class template for 2-dimension vectors manipulation.
-     */
     template <typename T>
       class Vector2
       {
@@ -17,37 +14,13 @@ namespace lblib
 	  T	_y;
 
 	public:
-	  /**
-	   * @brief The default constructor.
-	   */
 	  Vector2(T x = 0, T y = 0);
-
-	  /**
-	   * @brief Copy constructor.
-	   */
 	  Vector2(Vector2<T> const& v);
-
-	  /**
-	   * @brief The destructor.
-	   */
 	  ~Vector2(void);
 
 	public:
-	  /**
-	   * @brief Allows to affect a vector with another one.
-	   */
 	  Vector2<T> const& operator = (Vector2<T> const& v);
-
-	  /**
-	   * @brief Allows to affect a vector with a value.
-	   *
-	   * Every vector's components are affected by the value.
-	   */
 	  Vector2<T> const& operator = (T value);
-
-	  /*
-	   * Vector arithmetic :
-	   */
 
 	  Vector2<T> const& operator += (Vector2<T> const& v);
 	  Vector2<T> const& operator -= (Vector2<T> const& v);
@@ -66,48 +39,27 @@ namespace lblib
 	  void		set(T x, T y);
 
 	public:
-	  /**
-	   * @return the vector's length.
-	   */
 	  double		length(void) const;
-
-	  /**
-	   * @return the dot production of the instance and the vector giver
-	   * in parameter.
-	   */
 	  double		dot(Vector2<T> const& v) const;
-
-	  /**
-	   * @brief Normalizes the vector.
-	   */
 	  void		normalize(void);
       };
 
-    /*
-     * Vector arithmetic :
-     */
+    template <typename T>
+      Vector2<T>	operator + (Vector2<T> const& v1, Vector2<T> const& v2);
+    template <typename T>
+      Vector2<T>	operator - (Vector2<T> const& v1, Vector2<T> const& v2);
 
     template <typename T>
-      Vector2<T> operator + (Vector2<T> const& v1, Vector2<T> const& v2);
+      Vector2<T>	operator + (Vector2<T> const& v, T value);
     template <typename T>
-      Vector2<T> operator - (Vector2<T> const& v1, Vector2<T> const& v2);
+      Vector2<T>	operator - (Vector2<T> const& v, T value);
+    template <typename T>
+      Vector2<T>	operator * (Vector2<T> const& v, T value);
+    template <typename T>
+      Vector2<T>	operator / (Vector2<T> const& v, T value);
 
     template <typename T>
-      Vector2<T> operator + (Vector2<T> const& v, T value);
-    template <typename T>
-      Vector2<T> operator - (Vector2<T> const& v, T value);
-    template <typename T>
-      Vector2<T> operator * (Vector2<T> const& v, T value);
-    template <typename T>
-      Vector2<T> operator / (Vector2<T> const& v, T value);
-
-    /**
-     * @brief Dump a Vector2d on the standart output.
-     *
-     * Useful when debugging.
-     */
-    template <typename T>
-      std::ostream& operator = (std::ostream& out, Vector2<T> const& v);
+      bool	operator == (Vector2<T> const& u, Vector2<T> const& v);
 
     typedef Vector2<float>	Vector2f;
     typedef Vector2<int>		Vector2i;
@@ -290,6 +242,14 @@ namespace lblib
 	Vector2<T> vRes(v);
 	vRes /= value;
 	return vRes;
+      }
+
+    template <typename T>
+      bool operator == (Vector2<T> const& u, Vector2<T> const& v)
+      {
+	if ((u.getX() == v.getX()) && (u.getY() == v.getY()))
+	  return true;
+	return false;
       }
 
     template <typename T>
