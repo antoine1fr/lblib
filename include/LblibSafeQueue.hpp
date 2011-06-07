@@ -51,7 +51,7 @@ namespace lblib
 
     template <typename T>
       SafeQueue<T> const&
-      SafeQueue<T>::operator = (SafeQueue<T> const queue)
+      SafeQueue<T>::operator = (SafeQueue<T> const& queue)
       {
 	ScopedLock<> thisLock(this->_mutex);
 	ScopedLock<> queueLock(queue._mutex);
