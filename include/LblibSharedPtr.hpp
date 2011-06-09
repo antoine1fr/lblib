@@ -54,8 +54,10 @@ namespace lblib
   public:
     SharedPtr const&	operator = (SharedPtr const&);
     SharedPtr const&	operator = (T* rawPtr);
-    T&			operator * (void) const;
-    T*			operator -> (void) const;
+    T&			operator * (void);
+    T const&		operator * (void) const;
+    T*			operator -> (void);
+    T const*		operator -> (void) const;
 			operator bool (void) const;
     bool		operator ! (void) const;
 
@@ -103,7 +105,16 @@ namespace lblib
   }
 
   template <typename T>
-  T& SharedPtr<T>::operator * (void) const
+  T const& SharedPtr<T>::operator * (void) const
+  {
+    if (*this->_rawPtr)
+      return **(this->_rawPtr);
+    else
+      throw std::runtime_error("Tried to dereference a null pointer.");
+  }
+
+  template <typename T>
+  T& SharedPtr<T>::operator * (void)
   {
     if (*this->_rawPtr)
       return **(this->_rawPtr);
@@ -131,7 +142,13 @@ namespace lblib
   }
 
   template <typename T>
-  T* SharedPtr<T>::operator -> (void) const
+  T* SharedPtr<T>::operator -> (void)
+  {
+    return *this->_rawPtr;
+  }
+
+  template <typename T>
+  T const* SharedPtr<T>::operator -> (void) const
   {
     return *this->_rawPtr;
   }
