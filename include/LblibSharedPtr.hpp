@@ -56,6 +56,8 @@ namespace lblib
     SharedPtr const&	operator = (T* rawPtr);
     T&			operator * (void) const;
     T*			operator -> (void) const;
+			operator bool (void) const;
+    bool		operator ! (void) const;
 
   private:
     void		_release(void);
@@ -133,6 +135,22 @@ namespace lblib
   {
     return *this->_rawPtr;
   }
+
+  template <typename T>
+    inline SharedPtr<T>::operator bool (void) const
+    {
+      if (this->_rawPtr && *this->_rawPtr)
+	return true;
+      return false;
+    }
+
+  template <typename T>
+    inline bool SharedPtr<T>::operator ! (void) const
+    {
+      if (this->_rawPtr && *this->_rawPtr)
+	return false;
+      return true;
+    }
 } // namespace lblib
 
 #endif // !SHAREDPTR_HPP_
